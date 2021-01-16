@@ -17,7 +17,7 @@ class AppFixtures extends Fixture
 
             $product = new Aliment();
             $product->setNom($value)
-            ->setImage($value)
+            ->setImage('images/'.$value.'.jpg')
             ->setPrix(mt_rand(1, 10))
             ->setCalories(mt_rand(1, 70))
             ->setProteines(mt_rand(1, 70))

@@ -21,4 +21,14 @@ class AlimentController extends AbstractController
             'aliments' => $aliments,
         ]);
     }
+
+    /**
+     * @Route("/addAliment", name="addAliment")
+     */
+    public function addAliment(AlimentRepository $repository)
+    {
+
+        return $this->render('aliment/addAliment.html.twig', [
+        ]);
+    }
 }
