@@ -6,6 +6,7 @@ use App\Entity\Aliment;
 use App\Repository\AlimentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,21 +44,30 @@ class AlimentController extends AbstractController
             ->add('proteines', IntegerType::class)
             ->add('glucides', IntegerType::class)
             ->add('lipides', IntegerType::class)
+            ->add('image', FileType::class)
             ->add('save', SubmitType::class, ['label' => 'Ajouter un Aliment'])
             ->getForm();
 
             $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-
-                
+            if ($form->isSubmitted() && $form->isValid()) {                
     
                 // ... perform some action, such as saving the task to the database
                 // for example, if Task is a Doctrine entity, save it!
                 // $entityManager = $this->getDoctrine()->getManager();
+                
+                
                 $nom = $aliment->getNom();
-                $image = 'images/'.$nom.'.jpg';
+                $uploadImage = $form['image']->getData();
+                dump($uploadImage);
+                $mime = $uploadImage->getMimeType();
+                dump($mime);
+                $tab = explode('/',$mime);
+                $ext = '.'.$tab[1];
+                
+                $uploadImage->move('images',$nom.$ext);
+                
+                $image = 'images/'.$nom.$ext; // <== ICI TU DOIS JUSTE GET LE NOM ET LE SET DANS L'IMAGE
                 $aliment->setImage($image);
-                dump($aliment);
 
                 $em->persist($aliment);
                 $em->flush();
