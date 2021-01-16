@@ -3,6 +3,40 @@
 {% block title %}Ajouter un aliment{% endblock %}
 
 {% block body %}
-{{ form(formulaire) }}
+
+<div class="container col-6">
+    {{ form_start(formulaire)}}
+    {{ form_label(formulaire.nom, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.nom, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+
+    {{ form_label(formulaire.prix, 'Prix/kg', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.prix, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+<div class="row">
+    <div class="col-6">
+    {{ form_label(formulaire.calories, 'Calories', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.calories, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(formulaire.proteines, 'Protéines', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.proteines, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(formulaire.glucides, 'Glucides', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.glucides, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(formulaire.lipides, 'Lipides', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.lipides, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+</div>
+    {{ form_label(formulaire.image, 'Enregitrez une image', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.image, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+<br>
+    {{ form_label(formulaire.save, {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(formulaire.save, {'attr': {'class': 'mb-3 btn btn-secondary'}}) }}
+
+    {{ form_end(formulaire)}}
+</div>
+
 {% endblock %}
 

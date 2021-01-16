@@ -4,29 +4,29 @@
 
 {% block body %}
     
-<div class="container-fluid bg-dark">
+<div class="container-fluid bg-dark text-light">
   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
     {% for aliment in aliments %}
     <div class="col my-3">
-      <div class="card ">
+      <div class="card bg-secondary border-light">
         <h5 class="card-title text-center">{{aliment.nom}} (200g)</h5>
-      <img src="{{ asset(aliment.image) }} " class="card-img-top" alt="{{aliment.nom}}" style="max-width: 100%; max-height: 100%">
-        <div class="card-body">
-          <table class="table">
+        <img src="{{ asset(aliment.image) }} " class="card-img-top" alt="{{aliment.nom}}">
+        <div class="card-body p-0">
+          <table class="table table-secondary table-striped table-hover mb-0">
 
             <thead>
-              <tr><th scope="row">Prix : </th> <td>{{aliment.prix / 5}}€</td></tr>
-              <tr><th scope="row">Prix/kg : </th> <td>{{aliment.prix}}€</td></tr>
+              <tr><th scope="row">Prix</th> <td>{{aliment.prix / 5}}€</td></tr>
+              <tr><th scope="row">Prix/kg</th> <td>{{aliment.prix}}€</td></tr>
             </thead>
 
             <tbody>
-              <tr><td scope="row">Calories : </td><td>{{aliment.calories}}</td></tr>
+              <tr><td scope="row">Calories</td><td>{{aliment.calories}}</td></tr>
 
-              <tr><td scope="row">Protéines : </td><td>{{aliment.proteines}}</td></tr>
+              <tr><td scope="row">Protéines</td><td>{{aliment.proteines}}</td></tr>
 
-              <tr><td scope="row">Glucides : </td><td>{{aliment.glucides}}</td></tr>
+              <tr><td scope="row">Glucides</td><td>{{aliment.glucides}}</td></tr>
 
-              <tr><td scope="row">Lipides : </td><td>{{aliment.lipides}}</td></tr>
+              <tr><td scope="row">Lipides</td><td>{{aliment.lipides}}</td></tr>
             </tbody>
           </table>
         </div>

@@ -5,13 +5,9 @@ namespace App\Controller;
 use App\Entity\Aliment;
 use App\Repository\AlimentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\AlimentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AlimentController extends AbstractController
@@ -35,44 +31,30 @@ class AlimentController extends AbstractController
     public function addAliment(Request $request, EntityManagerInterface $em)
     {
 
-        $aliment = new Aliment();
+        $aliment = new Aliment(); // on créé un objet vide qu'on va passer en paramètre lors de la création de l'objet formulaire
 
-        $form = $this->createFormBuilder($aliment)
-            ->add('nom', TextType::class)
-            ->add('prix', IntegerType::class)
-            ->add('calories', IntegerType::class)
-            ->add('proteines', IntegerType::class)
-            ->add('glucides', IntegerType::class)
-            ->add('lipides', IntegerType::class)
-            ->add('image', FileType::class)
-            ->add('save', SubmitType::class, ['label' => 'Ajouter un Aliment'])
-            ->getForm();
+        $form = $this->createForm(AlimentType::class,$aliment); // on créé un objet formulaire avec le TYPE créé dans le fichier src/Form/AlimentType.php
 
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {                
+            $form->handleRequest($request); // on donne la requete à notre objet formulaire afin qu'il incorpore les données a l'objet aliment
+
+            if ($form->isSubmitted() && $form->isValid()) {     // on vérifie si le formulaire est soumis et valide                           
+                
+                $nom = $aliment->getNom(); // on récupère le nom de l'aliment
+                $uploadImage = $form['image']->getData(); // on récupère l'image uploadé
+
+                $mime = $uploadImage->getMimeType();// ON RECUPERE
+                $tab = explode('/',$mime);//////////// L'EXTENSION
+                $ext = '.'.end($tab);///////////////// DE L'IMAGE
+                
+                $uploadImage->move('images',$nom.$ext); // on déplace l'image dans le dossier images et on lui donne le nom de l'aliment et l'extension du fichier
+                
+                $image = 'images/'.$nom.$ext; // on défini le nom du chemin jusqu'a l'image
+                $aliment->setImage($image); // puis on le donne à l'objet aliment
+
+                $em->persist($aliment); // persist de l'objet aliment
+                $em->flush(); // sauvegarde en base de données
     
-                // ... perform some action, such as saving the task to the database
-                // for example, if Task is a Doctrine entity, save it!
-                // $entityManager = $this->getDoctrine()->getManager();
-                
-                
-                $nom = $aliment->getNom();
-                $uploadImage = $form['image']->getData();
-                dump($uploadImage);
-                $mime = $uploadImage->getMimeType();
-                dump($mime);
-                $tab = explode('/',$mime);
-                $ext = '.'.$tab[1];
-                
-                $uploadImage->move('images',$nom.$ext);
-                
-                $image = 'images/'.$nom.$ext; // <== ICI TU DOIS JUSTE GET LE NOM ET LE SET DANS L'IMAGE
-                $aliment->setImage($image);
-
-                $em->persist($aliment);
-                $em->flush();
-    
-                return $this->redirectToRoute('aliment');
+                return $this->redirectToRoute('aliment'); // redirection vers la page de nom de route 'aliment'
             }
             
 
