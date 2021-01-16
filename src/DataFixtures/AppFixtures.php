@@ -11,7 +11,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
        
-        $aliments = ['banane', 'carotte', 'cerise', 'champignon', 'choufleur', 'clementine', 'fenouil', 'fraise', 'haricot', 'poire', 'poireau', 'pomme', 'tomate'];
+        $aliments = ['banane','orange', 'carotte', 'cerise', 'champignon', 'choufleur', 'clementine', 'fenouil', 'fraise', 'haricot', 'poire', 'poireau', 'pomme', 'tomate'];
 
         foreach ($aliments as $key => $value) {
 
