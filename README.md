@@ -48,3 +48,4 @@ symfony server:start -d
 
 symfony open:local
 ```
+Vous pouvez commencez à travailler sur le projet ! Faites en ce que vous voulez.
