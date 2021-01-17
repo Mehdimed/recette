@@ -12,7 +12,7 @@ Puis placez vous dans celui ci :
   
 `cd recette`  
 </br>
-Une fois un projet symfony récupérer , il faut être certain de posséder  
+Une fois un projet symfony récupéré , il faut être certain de posséder  
 les même librairies/dépendances, pour installer tous les librairies on utilise composer :  
   
 `composer install`  
