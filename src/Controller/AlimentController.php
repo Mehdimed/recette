@@ -13,34 +13,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AlimentController extends AbstractController
 {
-    // /**
-    //  * @Route("/", name="aliment")
-    //  */
-    // public function index(AlimentRepository $repository)
-    // {
-    //     $aliments = $repository->findAll();
-
-    //     return $this->render('aliment/index.html.twig', [
-    //         'aliments' => $aliments,
-    //     ]);
-    // }
-
     /**
      * @Route("/", name="aliment")
      */
-    public function filtre(AlimentRepository $repository,Request $request)
+    public function index(AlimentRepository $repository,Request $request)
     {
 
 
-        $form = $this->createForm(FiltreType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted()){
-            $data = $form->getData();
-            $aliments = $repository->findByFiltre($data);
+        $form = $this->createForm(FiltreType::class);  //On créer un formulaire à partir du fichier Form/FiltreType.php
+        $form->handleRequest($request);  // On donne la requête à notre formulaire, celui ci récupère les données
+
+        if($form->isSubmitted()){ // si la requete contenait les informations nécéssaire au formulaire
+            $data = $form->getData();// on récupére les données du formulaire
+            $aliments = $repository->findByFiltre($data);// on récupère les aliments filtrés en fonction des données
         }else{
-            $aliments = $repository->findAll();
+            $aliments = $repository->findAll();// sinon on récupère tous les aliments
         }
 
+        // on donne les aliments et le formulaire à la vue
         return $this->render('aliment/index.html.twig', [
             'aliments' => $aliments,
             'formulaire' => $form->createView()
