@@ -44,7 +44,7 @@ C'est parfait le projet est désormais opérationnel ! Il ne vous reste plus qu'
 on lance le serveur en arrière plan et on ouvre le projet dans notre navigateur par défault :  <br><br>
 
 ```bash
-symfony console server:start -d
+symfony server:start -d
 
 symfony open:local
 ```
