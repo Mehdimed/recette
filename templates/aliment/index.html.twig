@@ -3,8 +3,10 @@
 {% block title %}Tous les aliments{% endblock %}
 
 {% block body %}
-    
-<div class="container-fluid bg-dark text-light">
+
+<div class="container-fluid"><div class="row">
+{% include "aliment/filtre.html.twig" %}
+<div class="container-fluid col-10 bg-dark text-light">
   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
     {% for aliment in aliments %}
     <div class="col my-3">
@@ -35,7 +37,7 @@
     {% endfor %}
   </div>
 </div>
-
+</div></div>
 
 
 {% endblock %}

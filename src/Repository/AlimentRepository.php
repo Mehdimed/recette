@@ -19,6 +19,32 @@ class AlimentRepository extends ServiceEntityRepository
         parent::__construct($registry, Aliment::class);
     }
 
+    /**
+     * @return Aliment[] Returns an array of Aliment objects
+     */
+    
+    public function findByFiltre(Array $data)
+    {
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        };
+        
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.calories <= :cal')
+            ->andWhere('a.proteines <= :pro')
+            ->andWhere('a.glucides <= :glu')
+            ->andWhere('a.lipides <= :lip')
+            ->setParameter('cal', $calories ? $calories : 200)
+            ->setParameter('pro', $proteines ? $proteines : 200)
+            ->setParameter('glu', $glucides ? $glucides : 200)
+            ->setParameter('lip', $lipides ? $lipides : 200)
+            ->orderBy('a.prix', $prix === false ? 'ASC' : 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Aliment[] Returns an array of Aliment objects
     //  */

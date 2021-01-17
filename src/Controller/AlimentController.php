@@ -6,22 +6,44 @@ use App\Entity\Aliment;
 use App\Repository\AlimentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AlimentType;
+use App\Form\FiltreType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AlimentController extends AbstractController
 {
+    // /**
+    //  * @Route("/", name="aliment")
+    //  */
+    // public function index(AlimentRepository $repository)
+    // {
+    //     $aliments = $repository->findAll();
+
+    //     return $this->render('aliment/index.html.twig', [
+    //         'aliments' => $aliments,
+    //     ]);
+    // }
+
     /**
      * @Route("/", name="aliment")
      */
-    public function index(AlimentRepository $repository)
+    public function filtre(AlimentRepository $repository,Request $request)
     {
 
-    $aliments = $repository->findAll();
+
+        $form = $this->createForm(FiltreType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
+            $data = $form->getData();
+            $aliments = $repository->findByFiltre($data);
+        }else{
+            $aliments = $repository->findAll();
+        }
 
         return $this->render('aliment/index.html.twig', [
             'aliments' => $aliments,
+            'formulaire' => $form->createView()
         ]);
     }
 
