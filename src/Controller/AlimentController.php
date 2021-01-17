@@ -21,9 +21,9 @@ class AlimentController extends AbstractController
 
 
         $form = $this->createForm(FiltreType::class);  //On créer un formulaire à partir du fichier Form/FiltreType.php
-        $form->handleRequest($request);  // On donne la requête à notre formulaire, celui ci récupère les données
+        $form->handleRequest($request);  // On donne la requête à notre formulaire, celui ci récupère les données si il y en a
 
-        if($form->isSubmitted()){ // si la requete contenait les informations nécéssaire au formulaire
+        if($form->isSubmitted()){ // si la requete contenait les données du formulaire et a été soumis
             $data = $form->getData();// on récupére les données du formulaire
             $aliments = $repository->findByFiltre($data);// on récupère les aliments filtrés en fonction des données
         }else{
