@@ -21,7 +21,7 @@ Il faut ensuite créer la base de données, cette ci s'appelle 'recette'.
 **Attention si une base de données du nom 'recette' existe déja, pensez  
 à renommer la base de données dans le fichier .env, mettez le nom que vous voulez.**  
  ```bash
-// Si le Symfony CLI est installé sur votre machine :  
+// Si Symfony CLI est installé sur votre machine :  
 symfony console doctrine:database:create
 
 // Sinon : 
