@@ -6,17 +6,17 @@
 </div>
 <br>
 
-    {{ form_label(formulaire.calories, 'Calories Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>200</output>
-    {{ form_widget(formulaire.calories,{'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '200'}}) }}
+    {{ form_label(formulaire.calories, 'Calories Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>400</output>
+    {{ form_widget(formulaire.calories,{'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '400', 'min': '50', 'max': '400'}}) }}
 
-    {{ form_label(formulaire.proteines, 'Proteines Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>200</output>
-    {{ form_widget(formulaire.proteines, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '200'}}) }}
+    {{ form_label(formulaire.proteines, 'Proteines Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>400</output>
+    {{ form_widget(formulaire.proteines, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '400', 'min': '50', 'max': '400'}}) }}
 
-    {{ form_label(formulaire.glucides, 'Glucides Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>200</output>
-    {{ form_widget(formulaire.glucides, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '200'}}) }}
+    {{ form_label(formulaire.glucides, 'Glucides Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>400</output>
+    {{ form_widget(formulaire.glucides, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '400', 'min': '50', 'max': '400'}}) }}
 
-    {{ form_label(formulaire.lipides, 'Lipides Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>200</output>
-    {{ form_widget(formulaire.lipides, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '200'}}) }}
+    {{ form_label(formulaire.lipides, 'Lipides Max :' , {'label_attr': {'class': 'form-label'}}) }}&nbsp;<output>400</output>
+    {{ form_widget(formulaire.lipides, {'attr': {'class': 'form-range', 'oninput': 'this.previousElementSibling.value = this.value', 'value': '400', 'min': '50', 'max': '400'}}) }}
     
 
     {{ form_label(formulaire.chercher, {'label_attr': {'class': 'form-label'}}) }}

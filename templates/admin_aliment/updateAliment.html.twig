@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier {{aliment.nom}}{% endblock %}
+{% block body %}
+
+<div class="container col-6">
+    <div class="text-center">
+        <img class="img-fluid rounded" src="{{asset(aliment.image)}}" alt="" width="350px" height="auto">
+    </div>
+    {{ form_start(form)}}
+    {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+
+    {{ form_label(form.prix, 'Prix/kg', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+<div class="row">
+    <div class="col-6">
+    {{ form_label(form.calories, 'Calories', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.calories, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(form.proteines, 'Protéines', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.proteines, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(form.glucides, 'Glucides', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.glucides, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+<div class="col-6">
+    {{ form_label(form.lipides, 'Lipides', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.lipides, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+</div>
+</div>
+    {{ form_label(form.image, 'Enregitrez une image', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.image, {'attr': {'class': 'mb-3 form-control bg-dark text-light'}}) }}
+<br>
+    {{ form_label(form.save, {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.save, {'attr': {'class': 'mb-3 btn btn-secondary'}}) }}
+
+    {{ form_end(form)}}
+</div>
+
+{% endblock %}

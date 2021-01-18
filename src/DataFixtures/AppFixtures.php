@@ -19,10 +19,10 @@ class AppFixtures extends Fixture
             $product->setNom($value)
             ->setImage('images/'.$value.'.jpg')
             ->setPrix(rand(3, 25))
-            ->setCalories(rand(20, 200))
-            ->setProteines(rand(20, 200))
-            ->setGlucides(rand(20, 200))
-            ->setLipides(rand(20, 200));
+            ->setCalories(rand(50, 400))
+            ->setProteines(rand(50, 400))
+            ->setGlucides(rand(50, 400))
+            ->setLipides(rand(50, 400));
             $manager->persist($product);
         }
 

@@ -22,7 +22,7 @@ class AlimentType extends AbstractType
             ->add('proteines', IntegerType::class)
             ->add('glucides', IntegerType::class)
             ->add('lipides', IntegerType::class)
-            ->add('image', FileType::class)
+            ->add('image', FileType::class,['data_class' => null, 'required' => false])
             ->add('save', SubmitType::class, ['label' => 'Ajouter un Aliment'])
         ;
     }
