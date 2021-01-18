@@ -15,7 +15,7 @@ Puis placez vous dans celui ci :
 Une fois un projet symfony récupéré , il faut être certain de posséder  
 les même librairies/dépendances, pour installer tous les librairies on utilise composer :  
   
-`composer install`  
+`composer update`  
 </br>
 Il faut ensuite créer la base de données, cette ci s'appelle 'recette'.  
 **Attention si une base de données du nom 'recette' existe déja, pensez  
